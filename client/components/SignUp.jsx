@@ -6,7 +6,7 @@ function SignUp(props) {
       <form>
         <input
           id="inputBox"
-          onChange={(e) => { props.updateSignUpUsername(e.target.value); }}
+          onChange={(e) => { props.setSignUpUsername(e.target.value); }}
           value={props.signUpUsername}
           placeholder="Username"
           type="text"
@@ -14,7 +14,7 @@ function SignUp(props) {
         />
         <input
           id="inputBox"
-          onChange={(e) => { props.updateSignUpPassword(e.target.value); }}
+          onChange={(e) => { props.setSignUpPassword(e.target.value); }}
           value={props.signUpPassword}
           placeholder="Password"
           type="text"

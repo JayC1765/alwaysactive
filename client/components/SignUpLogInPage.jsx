@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
-import TestLogin from './TestLogin';
 
 function SignUpLogInPage(props) {
   const [signUpUsername, setSignUpUsername] = useState('');
@@ -16,22 +15,6 @@ function SignUpLogInPage(props) {
 
   const navigate = useNavigate();
 
-  const updateSignUpUsername = (input) => {
-    setSignUpUsername(input);
-  };
-
-  const updateSignUpPassword = (input) => {
-    setSignUpPassword(input);
-  };
-
-  // const updateLogInUsername = (input) => {
-  //   setLogInUsername(input);
-  // };
-
-  const updateLogInPassword = (input) => {
-    setLogInPassword(input);
-  };
-
   const saveUser = (e) => {
     e.preventDefault();
     const username = signUpUsername;
@@ -40,7 +23,7 @@ function SignUpLogInPage(props) {
     if (username && password) {
       fetch('/signup', {
         method,
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
       })
         .then((data) => data.json())
@@ -51,6 +34,8 @@ function SignUpLogInPage(props) {
             setIsSignedIn(true);
             navigate('/HomePage', { state: username });
           } else {
+            // eslint-disable-next-line no-alert
+            alert('Username is taken');
             setSignUpUsername('');
             setSignUpPassword('');
           }
@@ -59,14 +44,15 @@ function SignUpLogInPage(props) {
     }
   };
 
-  const logIn = () => {
+  const logIn = (e) => {
+    e.preventDefault();
     const username = logInUsername;
     const password = logInPassword;
     const method = 'POST';
     fetch('/login', {
       method,
-      body: JSON.stringify({ username: username, password: password }),
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
     })
       .then((data) => data.json())
       .then((data) => {
@@ -76,6 +62,8 @@ function SignUpLogInPage(props) {
           setIsSignedIn(true);
           navigate('/HomePage', { state: username });
         } else {
+          // eslint-disable-next-line no-alert
+          alert('Incorrect login');
           setLogInUsername('');
           setLogInPassword('');
         }
@@ -86,8 +74,8 @@ function SignUpLogInPage(props) {
   const deleteUser = (username) => {
     fetch('/deleteUser', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username }),
-      headers: { 'Content-Type': 'application/json'},
     })
       .then((res) => res.json())
       .then((data) => {
@@ -118,16 +106,16 @@ function SignUpLogInPage(props) {
           <SignUp
             signUpUsername={signUpUsername}
             signUpPassword={signUpPassword}
-            updateSignUpUsername={updateSignUpUsername}
-            updateSignUpPassword={updateSignUpPassword}
+            setSignUpUsername={setSignUpUsername}
+            setSignUpPassword={setSignUpPassword}
             saveUser={saveUser}
           />
         ) : (
-          <TestLogin
+          <LogIn
             logInUsername={logInUsername}
             logInPassword={logInPassword}
             setLogInUsername={setLogInUsername}
-            updateLogInPassword={updateLogInPassword}
+            setLogInPassword={setLogInPassword}
             logIn={logIn}
           />
         )}
@@ -136,7 +124,7 @@ function SignUpLogInPage(props) {
           id="deleteBtn"
           onClick={() => deleteUser(signUpUsername)}
         >
-          Delete user account
+          Delete user
         </button>
       </div>
     </div>

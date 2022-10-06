@@ -10,23 +10,30 @@ function HomePage(props) {
   const [eventsArr, setEventsArr] = useState([]);
   const [eventSaved, setEventSaved] = useState(false);
 
-  const events = [];
-
-  useEffect(() => {
-    getEvents();
-  }, [])
-
   const getEvents = async () => {
-    const response = await fetch('/events', {method: 'PUT', body: JSON.stringify({username: state}), headers: { 'Content-Type': 'application/json' } });
+    console.log('what is state ', state) // forgot how we figured out the state is the username
+    const response = await fetch('/events', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: state }),
+    });
     const data = await response.json();
     setEventsArr(data);
   };
 
+  useEffect(() => {
+    getEvents();
+  }, []);
+
   const getFilteredEvents = async (city, stateF) => {
     const response = await fetch('/filter', {
       method: 'POST',
-      body: JSON.stringify({ username: state, city: city, state: stateF }),
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: state,
+        city,
+        state: stateF,
+      }),
     });
     const data = await response.json();
     setEventsArr(data);
@@ -37,6 +44,8 @@ function HomePage(props) {
     newArr[index].userstatus = status;
     setEventsArr(newArr);
   };
+
+  const events = [];
 
   for (let i = 0; i < eventsArr.length; i += 1) {
     const dateObj = new Date(eventsArr[i].time);
@@ -62,7 +71,10 @@ function HomePage(props) {
     <div>
       <div id="ContainerParent">
         <SideBarContainer username={state} formOpened={formOpened} setForm={setForm} getEvents={getEvents} getFilteredEvents={getFilteredEvents} />
-        <EventsContainer events={events} />
+        {/* <EventsContainer events={events} /> */}
+        <div id="EventsContainer">
+          {events}
+        </div>
       </div>
     </div>
   );

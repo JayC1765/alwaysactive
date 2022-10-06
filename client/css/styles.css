@@ -140,10 +140,12 @@ body{
 
 .selected-tab {
   text-decoration: underline;
+  color: green;
 }
 
 #signUpBtn,
-#logInBtn {
+#logInBtn,
+#deleteBtn {
   width: 120px;
   height: 40px;
   font-size: 1.15rem;
