@@ -3,7 +3,6 @@ import React from 'react';
 function TestLogin(props) {
   return (
     <div>
-      <h1>Log In</h1>
       <form>
         <input
           id="inputBox"
