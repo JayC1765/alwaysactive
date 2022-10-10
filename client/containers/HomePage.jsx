@@ -69,6 +69,10 @@ function HomePage(props) {
 
   return (
     <div>
+      <div id="Header">
+        <h1>HELLO WORLD</h1>
+        <h3>Always Active</h3>
+      </div>
       <div id="ContainerParent">
         <SideBarContainer username={state} formOpened={formOpened} setForm={setForm} getEvents={getEvents} getFilteredEvents={getFilteredEvents} />
         {/* <EventsContainer events={events} /> */}
