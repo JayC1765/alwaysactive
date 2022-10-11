@@ -18,6 +18,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/', router);
 
+// app.use('/*', (req, res) => res.status(200).sendFile(path.join(__dirname, '../client/index.html')));
+
 app.use((req, res) => {
   res.sendStatus(404);
 });
