@@ -70,11 +70,6 @@ function HomePage(props) {
 
   return doneFetching ? (
     <div>
-      <div className="user-header">
-        <button id="logOutBtn" type="submit">
-          Log out
-        </button>
-      </div>
       <div id="ContainerParent">
         <SideBarContainer
           username={state}
