@@ -1,3 +1,7 @@
+:root {
+  --navbar-bg-color: #39b7ff;
+}
+
 body{
   background-color: rgb(233, 233, 233);
   margin: 0;
@@ -180,27 +184,29 @@ body{
   margin-bottom: 20px;
 }
 
-.main-page{
-  background: lightblue;
+.main-page {
+  background-color: var(--navbar-bg-color);
 }
 
-.main-header, .user-header{
+.main-header {
   display: flex;
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  background: lightblue;
+  background-color: var(--navbar-bg-color);
 }
 
-#main-logo{
-  height: 200px;
-  width: 200px;
+#main-logo {
+  height: 150px;
+  width: 150px;
+  padding-left: 20px;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   width: 100vw;
+  background-color: var(--navbar-bg-color);
 }
 
 .navbar li{
