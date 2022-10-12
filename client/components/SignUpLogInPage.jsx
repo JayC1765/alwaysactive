@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
+import logo from '../images/logo.png';
+import Logo from '../containers/Logo';
 
 function SignUpLogInPage(props) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [logInUsername, setLogInUsername] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(true);
-
-  // const { state } = useLocation();
-
-  const navigate = useNavigate();
+  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(location.state);
 
   const saveUser = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ function SignUpLogInPage(props) {
             setSignUpUsername('');
             setSignUpPassword('');
             setIsSignedIn(true);
-            navigate('/HomePage', { state: username });
+            navigate('/homepage', { state: username });
           } else {
             // eslint-disable-next-line no-alert
             alert('Username is taken');
@@ -60,7 +61,7 @@ function SignUpLogInPage(props) {
           setLogInUsername('');
           setLogInPassword('');
           setIsSignedIn(true);
-          navigate('/HomePage', { state: username });
+          navigate('/homepage', { state: username });
         } else {
           // eslint-disable-next-line no-alert
           alert('Incorrect login');
@@ -86,47 +87,51 @@ function SignUpLogInPage(props) {
   };
 
   return (
-    <div id='modalContainer'>
-      <div id="modal">
-        <div className="form-tabs">
-          <h2
-            onClick={() => setIsSignUpFormVisible(true)}
-            className={isSignUpFormVisible ? "selected-tab" : ""}
+    <div>
+      <Logo />
+      <div id="modalContainer">
+        <div id="modal">
+          <div className="form-tabs">
+            <h2
+              onClick={() => setIsSignUpFormVisible(true)}
+              className={isSignUpFormVisible ? "selected-tab" : ""}
+            >
+              Sign Up
+            </h2>
+            <h2
+              onClick={() => setIsSignUpFormVisible(false)}
+              className={isSignUpFormVisible ? "" : "selected-tab"}
+            >
+              Log In
+            </h2>
+          </div>
+          {isSignUpFormVisible ? (
+            <SignUp
+              signUpUsername={signUpUsername}
+              signUpPassword={signUpPassword}
+              setSignUpUsername={setSignUpUsername}
+              setSignUpPassword={setSignUpPassword}
+              saveUser={saveUser}
+            />
+          ) : (
+            <LogIn
+              logInUsername={logInUsername}
+              logInPassword={logInPassword}
+              setLogInUsername={setLogInUsername}
+              setLogInPassword={setLogInPassword}
+              logIn={logIn}
+            />
+          )}
+          <button
+            type="button"
+            id="deleteBtn"
+            onClick={() => deleteUser(signUpUsername)}
           >
-            Sign Up
-          </h2>
-          <h2
-            onClick={() => setIsSignUpFormVisible(false)}
-            className={isSignUpFormVisible ? "" : "selected-tab"}
-          >
-            Log In
-          </h2>
+            Delete user
+          </button>
         </div>
-        {isSignUpFormVisible ? (
-          <SignUp
-            signUpUsername={signUpUsername}
-            signUpPassword={signUpPassword}
-            setSignUpUsername={setSignUpUsername}
-            setSignUpPassword={setSignUpPassword}
-            saveUser={saveUser}
-          />
-        ) : (
-          <LogIn
-            logInUsername={logInUsername}
-            logInPassword={logInPassword}
-            setLogInUsername={setLogInUsername}
-            setLogInPassword={setLogInPassword}
-            logIn={logIn}
-          />
-        )}
-        <button
-          type="button"
-          id="deleteBtn"
-          onClick={() => deleteUser(signUpUsername)}
-        >
-          Delete user
-        </button>
       </div>
+
     </div>
   );
 }

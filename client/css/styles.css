@@ -1,14 +1,21 @@
 body{
   background-color: rgb(233, 233, 233);
+  margin: 0;
 }
 
-#searchBtn{
+#searchBtn,
+#logOutBtn{
   width: 100px;
   height: 30px;
   border-radius: 10px;
   border: none;
   background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
   margin-bottom: 30px;
+}
+
+#logOutBtn{
+  margin-top: 90px;
+  margin-right: 100px;
 }
 
 #createBtn{
@@ -32,7 +39,7 @@ body{
 #EventsContainer {
   /* display: grid; */
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
   /* grid-template-columns: 1fr 1fr;
   margin: 10px;*/
@@ -44,6 +51,7 @@ body{
   background-color: #d8d8d8;
   border-radius: 10px;
   max-width: 450px;
+  margin-right: 20px;
 }
 
 #ContainerParent {
@@ -51,6 +59,11 @@ body{
   grid-template-columns: 1fr 2.25fr;
   grid-gap: 20px;
   margin-top: 20px;
+}
+
+#Header {
+  display: block;
+  justify-content: center;
 }
 
 #EventBox {
@@ -108,7 +121,7 @@ body{
   display: flex;
   justify-content: center;
   background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
-  align-items: center;
+  padding-top: 200px;
 }
 
 #modal {
@@ -145,7 +158,7 @@ body{
 
 #signUpBtn,
 #logInBtn,
-#deleteBtn {
+#deleteBtn{
   width: 120px;
   height: 40px;
   font-size: 1.15rem;
@@ -165,4 +178,54 @@ body{
   padding-left: 15px;
   font-size: 1.15rem;
   margin-bottom: 20px;
+}
+
+.main-page{
+  background: lightblue;
+}
+
+.main-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  background: lightblue;
+}
+
+.main-header, .user-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  background: lightblue;
+}
+
+#main-logo{
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+}
+
+.navbar li{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 80px;
+  margin-top: 90px;
+}
+
+.navbar a{
+  text-decoration: none;
+}
+
+.navbar a:hover{
+  color: white;
+}
+
+.showcase{
+  background-image: url('../images/background.png');
+  background-color: green;
+  height: 100%;
+  width: 100%;
 }
