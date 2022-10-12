@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
 import background from '../images/background.png';
 
 function MainPage() {
@@ -7,10 +6,6 @@ function MainPage() {
 
   return (
     <div className="main-page">
-      {/* <div className="main-container">
-        <Logo />
-        <Navbar />
-      </div> */}
       <div className="showcases">
         <img src={background} alt="" />
       </div>
