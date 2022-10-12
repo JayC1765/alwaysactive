@@ -184,14 +184,6 @@ body{
   background: lightblue;
 }
 
-.main-container{
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
-  background: lightblue;
-}
-
 .main-header, .user-header{
   display: flex;
   justify-content: space-between;

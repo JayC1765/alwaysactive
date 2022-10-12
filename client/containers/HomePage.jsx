@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import SideBarContainer from './SideBarContainer';
 import EventsContainer from './EventsContainer';
 import EventBox from '../components/EventBox';
-import Logo from './Logo';
 
 function HomePage(props) {
   const { state } = useLocation();
@@ -72,7 +71,6 @@ function HomePage(props) {
   return doneFetching ? (
     <div>
       <div className="user-header">
-        <Logo />
         <button id="logOutBtn" type="submit">
           Log out
         </button>

@@ -8,10 +8,10 @@ function MainPage() {
 
   return (
     <div className="main-page">
-      <div className="main-container">
+      {/* <div className="main-container">
         <Logo />
         <Navbar />
-      </div>
+      </div> */}
       <div className="showcases">
         <img src={background} alt="" />
       </div>

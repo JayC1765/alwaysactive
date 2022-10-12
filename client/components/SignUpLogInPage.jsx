@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
-import logo from '../images/logo.png';
-import Logo from '../containers/Logo';
 
 function SignUpLogInPage(props) {
   const navigate = useNavigate();
@@ -88,7 +86,6 @@ function SignUpLogInPage(props) {
 
   return (
     <div>
-      <Logo />
       <div id="modalContainer">
         <div id="modal">
           <div className="form-tabs">
