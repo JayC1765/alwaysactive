@@ -12,10 +12,9 @@ function MainPage() {
         <Logo />
         <Navbar />
       </div>
-      {/* this should be the background */}
-      <div className="showcase"></div>
-      {/* <img src={background} alt="" /> */}
-      {/* <div className="showcase" style={{ background: background }}></div> */}
+      <div className="showcases">
+        <img src={background} alt="" />
+      </div>
     </div>
   );
 }

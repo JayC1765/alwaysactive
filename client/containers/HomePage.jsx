@@ -10,9 +10,9 @@ function HomePage(props) {
   const [formOpened, setForm] = useState(false);
   const [eventsArr, setEventsArr] = useState([]);
   const [eventSaved, setEventSaved] = useState(false);
+  const [doneFetching, setDoneFetching] = useState(false);
 
   const getEvents = async () => {
-    console.log('what is state ', state) // forgot how we figured out the state is the username
     const response = await fetch('/events', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -20,6 +20,7 @@ function HomePage(props) {
     });
     const data = await response.json();
     setEventsArr(data);
+    setDoneFetching(true);
   };
 
   useEffect(() => {
@@ -46,42 +47,49 @@ function HomePage(props) {
     setEventsArr(newArr);
   };
 
-  const events = [];
+  const renderEventBoxes = () => eventsArr.map((event, i) => {
+    const dateObj = new Date(event.time);
+    return (
+      <EventBox
+        key={`EventBox ${i}`}
+        index={i}
+        name={event.name}
+        city={event.city}
+        state={event.state}
+        description={event.description}
+        owner={event.username}
+        eventId={event._id}
+        rsvpStatus={event.userstatus}
+        user={state}
+        date={dateObj.toLocaleDateString()}
+        time={dateObj.toLocaleTimeString()}
+        getEvents={getEvents}
+        toggleRsvp={toggleRsvp}
+      />
+    );
+  });
 
-  for (let i = 0; i < eventsArr.length; i += 1) {
-    const dateObj = new Date(eventsArr[i].time);
-    events.push(<EventBox
-      key={`EventBox ${i}`}
-      index={i}
-      name={eventsArr[i].name}
-      city={eventsArr[i].city}
-      state={eventsArr[i].state}
-      description={eventsArr[i].description}
-      owner={eventsArr[i].username}
-      eventId={eventsArr[i]._id}
-      rsvpStatus={eventsArr[i].userstatus}
-      user={state}
-      date={dateObj.toLocaleDateString()}
-      time={dateObj.toLocaleTimeString()}
-      getEvents={getEvents}
-      toggleRsvp={toggleRsvp}
-    />);
-  }
-
-  return (
+  return doneFetching ? (
     <div>
       <div className="user-header">
         <Logo />
-        <button id="logOutBtn" type="submit">Log out</button>
+        <button id="logOutBtn" type="submit">
+          Log out
+        </button>
       </div>
       <div id="ContainerParent">
-        <SideBarContainer username={state} formOpened={formOpened} setForm={setForm} getEvents={getEvents} getFilteredEvents={getFilteredEvents} />
-        {/* <EventsContainer events={events} /> */}
-        <div id="EventsContainer">
-          {events}
-        </div>
+        <SideBarContainer
+          username={state}
+          formOpened={formOpened}
+          setForm={setForm}
+          getEvents={getEvents}
+          getFilteredEvents={getFilteredEvents}
+        />
+        <div id="EventsContainer">{renderEventBoxes()}</div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 }
 
