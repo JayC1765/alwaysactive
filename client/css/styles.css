@@ -70,7 +70,7 @@ body{
   width:300px;
   height:300px;
   border: 1px solid A0B5EB;
-  padding-left: 20px;
+  padding: 0 20px;
   margin: 10px;
   border-radius: 10px;
   background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
@@ -227,4 +227,18 @@ body{
   background-image: url('../images/background.png');
   /* height: 1000px;
   width: 1000px; */
+}
+
+.icons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons button{
+  border: none;
+  background: transparent;
+}
+
+.icons button:hover{
+  cursor: pointer;
 }
