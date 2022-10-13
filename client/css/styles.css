@@ -18,7 +18,6 @@ body{
 }
 
 #logOutBtn{
-  margin-top: 90px;
   margin-right: 100px;
 }
 
@@ -215,7 +214,6 @@ body{
   display: inline-block;
   text-transform: uppercase;
   margin-right: 80px;
-  margin-top: 90px;
 }
 
 .navbar a{
