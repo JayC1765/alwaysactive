@@ -6,8 +6,7 @@ function MainPage() {
 
   return (
     <div className="main-page">
-      <div className="showcases">
-        <img src={background} alt="" />
+      <div className="showcase">
       </div>
     </div>
   );

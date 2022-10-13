@@ -1,10 +1,20 @@
 :root {
   --navbar-bg-color: #39b7ff;
+  --navbar-height: 150px;
 }
 
 body{
   background-color: rgb(233, 233, 233);
   margin: 0;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#modal, #ContainerParent {
+  position: absolute;
+  top: var(--navbar-height)
 }
 
 #searchBtn,
@@ -58,10 +68,10 @@ body{
 }
 
 #ContainerParent {
+  margin-top: 25px;
   display: grid;
   grid-template-columns: 1fr 2.25fr;
   grid-gap: 20px;
-  margin-top: 20px;
 }
 
 #Header {
@@ -124,12 +134,12 @@ body{
   display: flex;
   justify-content: center;
   background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
-  padding-top: 200px;
 }
 
 #modal {
   width: 400px;
   height: 500px;
+  margin-top: 25px;
   background: rgba(225,225,255,0.09);
   backdrop-filter: blur(5px);
   box-shadow: 0 25px 45px rgba(0,0,0,0.1);
@@ -196,14 +206,16 @@ body{
 }
 
 #main-logo {
-  height: 150px;
   width: 150px;
   padding-left: 20px;
 }
 
 .navbar {
+  position: absolute;
+  height: var(--navbar-height);
   display: flex;
   justify-content: space-between;
+  top: 0;
   width: 100vw;
   background-color: var(--navbar-bg-color);
 }
@@ -229,10 +241,12 @@ body{
   color: white;
 }
 
-.showcase{
-  background-image: url('../images/background.png');
-  /* height: 1000px;
-  width: 1000px; */
+.showcase {
+  background-image: url(../images/background.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .icons{
@@ -243,8 +257,4 @@ body{
 .icons button{
   border: none;
   background: transparent;
-}
-
-.icons button:hover{
-  cursor: pointer;
 }
