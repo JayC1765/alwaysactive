@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
-import logo from '../images/logo.png';
-import Logo from '../containers/Logo';
 
 function SignUpLogInPage(props) {
   const navigate = useNavigate();
@@ -14,7 +12,9 @@ function SignUpLogInPage(props) {
   const [logInUsername, setLogInUsername] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(location.state);
+  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(
+    location.state
+  );
 
   const saveUser = (e) => {
     e.preventDefault();
@@ -88,19 +88,18 @@ function SignUpLogInPage(props) {
 
   return (
     <div>
-      <Logo />
       <div id="modalContainer">
         <div id="modal">
           <div className="form-tabs">
             <h2
               onClick={() => setIsSignUpFormVisible(true)}
-              className={isSignUpFormVisible ? "selected-tab" : ""}
+              className={isSignUpFormVisible ? 'selected-tab' : ''}
             >
               Sign Up
             </h2>
             <h2
               onClick={() => setIsSignUpFormVisible(false)}
-              className={isSignUpFormVisible ? "" : "selected-tab"}
+              className={isSignUpFormVisible ? '' : 'selected-tab'}
             >
               Log In
             </h2>
@@ -131,7 +130,6 @@ function SignUpLogInPage(props) {
           </button>
         </div>
       </div>
-
     </div>
   );
 }

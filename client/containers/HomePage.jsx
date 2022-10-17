@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import SideBarContainer from './SideBarContainer';
 import EventsContainer from './EventsContainer';
 import EventBox from '../components/EventBox';
-import Logo from './Logo';
 
 function HomePage(props) {
   const { state } = useLocation();
@@ -47,36 +46,31 @@ function HomePage(props) {
     setEventsArr(newArr);
   };
 
-  const renderEventBoxes = () => eventsArr.map((event, i) => {
-    const dateObj = new Date(event.time);
-    return (
-      <EventBox
-        key={`EventBox ${i}`}
-        index={i}
-        name={event.name}
-        city={event.city}
-        state={event.state}
-        description={event.description}
-        owner={event.username}
-        eventId={event._id}
-        rsvpStatus={event.userstatus}
-        user={state}
-        date={dateObj.toLocaleDateString()}
-        time={dateObj.toLocaleTimeString()}
-        getEvents={getEvents}
-        toggleRsvp={toggleRsvp}
-      />
-    );
-  });
+  const renderEventBoxes = () =>
+    eventsArr.map((event, i) => {
+      const dateObj = new Date(event.time);
+      return (
+        <EventBox
+          key={`EventBox ${i}`}
+          index={i}
+          name={event.name}
+          city={event.city}
+          state={event.state}
+          description={event.description}
+          owner={event.username}
+          eventId={event._id}
+          rsvpStatus={event.userstatus}
+          user={state}
+          date={dateObj.toLocaleDateString()}
+          time={dateObj.toLocaleTimeString()}
+          getEvents={getEvents}
+          toggleRsvp={toggleRsvp}
+        />
+      );
+    });
 
   return doneFetching ? (
     <div>
-      <div className="user-header">
-        <Logo />
-        <button id="logOutBtn" type="submit">
-          Log out
-        </button>
-      </div>
       <div id="ContainerParent">
         <SideBarContainer
           username={state}
