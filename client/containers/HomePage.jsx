@@ -1,31 +1,40 @@
-import React, { Component, useState } from 'react';
-import { render } from 'react-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import SideBarContainer from './SideBarContainer';
 import EventsContainer from './EventsContainer';
-import { useLocation } from 'react-router-dom';
 import EventBox from '../components/EventBox';
-
-let counter = 0;
 
 function HomePage(props) {
   const { state } = useLocation();
   const [formOpened, setForm] = useState(false);
   const [eventsArr, setEventsArr] = useState([]);
   const [eventSaved, setEventSaved] = useState(false);
-
-  const events = [];
+  const [doneFetching, setDoneFetching] = useState(false);
 
   const getEvents = async () => {
-    const response = await fetch('/events', {method: 'PUT', body: JSON.stringify({username: state}), headers: { 'Content-Type': 'application/json' } });
+    const response = await fetch('/events', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: state }),
+    });
     const data = await response.json();
     setEventsArr(data);
+    setDoneFetching(true);
   };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
 
   const getFilteredEvents = async (city, stateF) => {
     const response = await fetch('/filter', {
       method: 'POST',
-      body: JSON.stringify({ username: state, city: city, state: stateF }),
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: state,
+        city,
+        state: stateF,
+      }),
     });
     const data = await response.json();
     setEventsArr(data);
@@ -37,38 +46,43 @@ function HomePage(props) {
     setEventsArr(newArr);
   };
 
-  while (counter < 1) {
-    getEvents();
-    counter += 1;
-  }
+  const renderEventBoxes = () => eventsArr.map((event, i) => {
+    const dateObj = new Date(event.time);
+    return (
+      <EventBox
+        key={`EventBox ${i}`}
+        index={i}
+        name={event.name}
+        city={event.city}
+        state={event.state}
+        description={event.description}
+        owner={event.username}
+        eventId={event._id}
+        rsvpStatus={event.userstatus}
+        user={state}
+        date={dateObj.toLocaleDateString()}
+        time={dateObj.toLocaleTimeString()}
+        getEvents={getEvents}
+        toggleRsvp={toggleRsvp}
+      />
+    );
+  });
 
-  for (let i = 0; i < eventsArr.length; i += 1) {
-    const dateObj = new Date(eventsArr[i].time);
-    events.push(<EventBox
-      key={i}
-      index={i}
-      name={eventsArr[i].name}
-      city={eventsArr[i].city}
-      state={eventsArr[i].state}
-      description={eventsArr[i].description}
-      owner={eventsArr[i].username}
-      eventId={eventsArr[i]._id}
-      rsvpStatus={eventsArr[i].userstatus}
-      user={state}
-      date={dateObj.toLocaleDateString()}
-      time={dateObj.toLocaleTimeString()}
-      getEvents={getEvents}
-      toggleRsvp={toggleRsvp}
-    />);
-  }
-
-  return (
+  return doneFetching ? (
     <div>
       <div id="ContainerParent">
-        <SideBarContainer username={state} formOpened={formOpened} setForm={setForm} getEvents={getEvents} getFilteredEvents={getFilteredEvents} />
-        <EventsContainer events={events} />
+        <SideBarContainer
+          username={state}
+          formOpened={formOpened}
+          setForm={setForm}
+          getEvents={getEvents}
+          getFilteredEvents={getFilteredEvents}
+        />
+        <div id="EventsContainer">{renderEventBoxes()}</div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 }
 

@@ -1,31 +1,28 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 
 function LogIn(props) {
   return (
     <div>
-      <h1>Log In</h1>
-      <div>
-        <input id='inputBox'
-          onChange={(e) => {props.updateLogInUsername(e.target.value)}}
-          value={props.logInUsername}
-          placeholder='Username'
-          type='text'
+      <form onSubmit={props.logIn}>
+        <input
+          id="inputBox"
+          type="text"
+          placeholder="Username"
+          required
+          onChange={(e) => {props.setLogInUsername(e.target.value)}}
         />
-        <input id='inputBox'
-          onChange={(e) => {props.updateLogInPassword(e.target.value)}}
-          value={props.logInPassword}
-          placeholder='Password'
-          type='text'
+        <input
+          id="inputBox"
+          type="password"
+          placeholder="Password"
+          required
+          onChange={(e) => {props.setLogInPassword(e.target.value)}}
         />
-        <div>
-          <button id='logInBtn' onClick={() => {props.logIn()}}>
-            Log In
-          </button>
-        </div>
-      </div>
+        <input type="submit" value="Log In" id="logInBtn" />
+      </form>
     </div>
-  )
-};
+
+  );
+}
 
 export default LogIn;
