@@ -1,4 +1,4 @@
-root {
+:root {
   --navbar-bg-color: #39b7ff;
   --navbar-height: 150px;
 }
@@ -243,7 +243,7 @@ button:hover {
 }
 
 .showcase {
-  background-image: url('../images/background.png');
+  background-image: url(../images/background.png);
   background-size: cover;
   background-position: 50% 50%;
   width: 100vw;
