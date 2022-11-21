@@ -11,7 +11,6 @@ function SignUpLogInPage(props) {
   const [signUpPassword, setSignUpPassword] = useState('');
   const [logInUsername, setLogInUsername] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(
     location.state
   );
@@ -32,7 +31,7 @@ function SignUpLogInPage(props) {
           if (data === true) {
             setSignUpUsername('');
             setSignUpPassword('');
-            setIsSignedIn(true);
+            props.setIsLogged(true);
             navigate('/homepage', { state: username });
           } else {
             // eslint-disable-next-line no-alert
@@ -60,7 +59,7 @@ function SignUpLogInPage(props) {
         if (data === true) {
           setLogInUsername('');
           setLogInPassword('');
-          setIsSignedIn(true);
+          props.setIsLogged(true);
           navigate('/homepage', { state: username });
         } else {
           // eslint-disable-next-line no-alert
@@ -121,13 +120,6 @@ function SignUpLogInPage(props) {
               logIn={logIn}
             />
           )}
-          <button
-            type="button"
-            id="deleteBtn"
-            onClick={() => deleteUser(signUpUsername)}
-          >
-            Delete user
-          </button>
         </div>
       </div>
     </div>

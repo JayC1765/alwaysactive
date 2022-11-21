@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import background from '../images/background.png';
 
 function MainPage() {
   const [isSignedIn, setIsSignedIn] = useState(false);

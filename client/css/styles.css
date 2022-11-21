@@ -13,7 +13,8 @@ button:hover {
 }
 
 #modal,
-#ContainerParent {
+#ContainerParent,
+.main-page {
   position: absolute;
   top: var(--navbar-height);
 }
@@ -195,7 +196,7 @@ button:hover {
 }
 
 .main-page {
-  background-color: var(--navbar-bg-color);
+  background-color: red;
 }
 
 .main-header {

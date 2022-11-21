@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SideBarContainer from './SideBarContainer';
-import EventsContainer from './EventsContainer';
 import EventBox from '../components/EventBox';
 
 function HomePage(props) {
   const { state } = useLocation();
   const [formOpened, setForm] = useState(false);
   const [eventsArr, setEventsArr] = useState([]);
-  const [eventSaved, setEventSaved] = useState(false);
   const [doneFetching, setDoneFetching] = useState(false);
 
   const getEvents = async () => {

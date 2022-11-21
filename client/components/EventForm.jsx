@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import React, { useState } from 'react';
 
 function EventForm(props) {
   const [name, setName] = useState('');
@@ -10,13 +9,22 @@ function EventForm(props) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
-  const username = props.username
+  const { username } = props;
 
   const saveEvent = () => {
-    let method = 'POST';
+    const method = 'POST';
     fetch('/events', {
       method,
-      body: JSON.stringify({ name, city, state, description, number, time, date, username }),
+      body: JSON.stringify({
+        name,
+        city,
+        state,
+        description,
+        number,
+        time,
+        date,
+        username,
+      }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then(props.getEvents)
@@ -24,7 +32,6 @@ function EventForm(props) {
 
     props.setForm(false);
   };
-
 
   return (
     <div>
@@ -59,21 +66,17 @@ function EventForm(props) {
         value={number}
       />
       <h6>When will your event be held?</h6>
-      <input
-        type="date"
-        onChange={(e) => setDate(e.target.value)}
-      />
+      <input type="date" onChange={(e) => setDate(e.target.value)} />
       <h6>What time will your event start?</h6>
-      <input
-        type="time"
-        onChange={(e) => setTime(e.target.value)}
-      />
-      <button onClick={() => {saveEvent();}}>
+      <input type="time" onChange={(e) => setTime(e.target.value)} />
+      <button
+        onClick={() => {
+          saveEvent();
+        }}
+      >
         Save Event
       </button>
-      <button onClick={() => props.setForm(false)}>
-        Cancel
-      </button>
+      <button onClick={() => props.setForm(false)}>Cancel</button>
       {/* <button onClick={() => }>
         Share Event
       </button> */}
