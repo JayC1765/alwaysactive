@@ -11,8 +11,9 @@ function SignUpLogInPage(props) {
   const [signUpPassword, setSignUpPassword] = useState('');
   const [logInUsername, setLogInUsername] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(location.state);
+  const [isSignUpFormVisible, setIsSignUpFormVisible] = useState(
+    location.state
+  );
 
   const saveUser = (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ function SignUpLogInPage(props) {
           if (data === true) {
             setSignUpUsername('');
             setSignUpPassword('');
-            setIsSignedIn(true);
+            props.setIsLogged(true);
             navigate('/homepage', { state: username });
           } else {
             // eslint-disable-next-line no-alert
@@ -58,7 +59,7 @@ function SignUpLogInPage(props) {
         if (data === true) {
           setLogInUsername('');
           setLogInPassword('');
-          setIsSignedIn(true);
+          props.setIsLogged(true);
           navigate('/homepage', { state: username });
         } else {
           // eslint-disable-next-line no-alert
@@ -91,13 +92,13 @@ function SignUpLogInPage(props) {
           <div className="form-tabs">
             <h2
               onClick={() => setIsSignUpFormVisible(true)}
-              className={isSignUpFormVisible ? "selected-tab" : ""}
+              className={isSignUpFormVisible ? 'selected-tab' : ''}
             >
               Sign Up
             </h2>
             <h2
               onClick={() => setIsSignUpFormVisible(false)}
-              className={isSignUpFormVisible ? "" : "selected-tab"}
+              className={isSignUpFormVisible ? '' : 'selected-tab'}
             >
               Log In
             </h2>
@@ -119,16 +120,8 @@ function SignUpLogInPage(props) {
               logIn={logIn}
             />
           )}
-          <button
-            type="button"
-            id="deleteBtn"
-            onClick={() => deleteUser(signUpUsername)}
-          >
-            Delete user
-          </button>
         </div>
       </div>
-
     </div>
   );
 }

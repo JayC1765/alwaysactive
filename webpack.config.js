@@ -18,18 +18,12 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-react',
-          ],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|png|svg|gif)$/,
@@ -46,7 +40,5 @@ module.exports = {
       '/': 'http://localhost:3000',
     },
   },
-  plugins: [
-    new HtmlWebpackPlugin({ template: './client/index.html' }),
-  ],
+  plugins: [new HtmlWebpackPlugin({ template: './client/index.html' })],
 };

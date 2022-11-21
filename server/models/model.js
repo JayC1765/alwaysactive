@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
 const { Pool } = require('pg');
-const pgUrl = require('../../postgres-URL');
+require('dotenv').config();
 
 const pool = new Pool({
-  connectionString: pgUrl,
+  connectionString: process.env.PG_URL,
 });
 
 pool.query(`CREATE TABLE IF NOT EXISTS users (

@@ -3,39 +3,41 @@
   --navbar-height: 150px;
 }
 
-body{
+body {
   background-color: rgb(233, 233, 233);
   margin: 0;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
-#modal, #ContainerParent {
+#modal,
+#ContainerParent,
+.main-page {
   position: absolute;
-  top: var(--navbar-height)
+  top: var(--navbar-height);
 }
 
 #searchBtn,
-#logOutBtn{
+#logOutBtn {
   width: 100px;
   height: 30px;
   border-radius: 10px;
   border: none;
-  background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
+  background-image: linear-gradient(to right bottom, #a0b5eb, #c9f0e4);
   margin-bottom: 30px;
 }
 
-#logOutBtn{
+#logOutBtn {
   margin-right: 100px;
 }
 
-#createBtn{
+#createBtn {
   width: 85%;
   height: 30px;
   border-radius: 10px;
-  background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
+  background-image: linear-gradient(to right bottom, #a0b5eb, #c9f0e4);
   border: none;
   margin-top: 30px;
 }
@@ -45,8 +47,8 @@ button:hover{
   justify-content: center;
 }
 
-#searchBox{
-  border: 1px solid #A0B5EB;
+#searchBox {
+  border: 1px solid #a0b5eb;
 }
 
 #EventsContainer {
@@ -60,7 +62,7 @@ button:hover{
 }
 
 #SideBarContainer {
-  border: 1px solid #A0B5EB;
+  border: 1px solid #a0b5eb;
   background-color: #d8d8d8;
   border-radius: 10px;
   max-width: 450px;
@@ -80,33 +82,33 @@ button:hover{
 }
 
 #EventBox {
-  width:300px;
-  height:300px;
+  width: 300px;
+  height: 300px;
   border: 1px solid A0B5EB;
   padding: 0 20px;
   margin: 10px;
   border-radius: 10px;
-  background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
+  background-image: linear-gradient(to right bottom, #a0b5eb, #c9f0e4);
   animation: float 7s ease-in-out infinite;
   color: rgb(33, 33, 33);
 }
 
 @keyframes float {
-	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
-	50% {
-		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-		transform: translatey(-7px);
-	}
-	100% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-7px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
 }
 
-#citySearch, 
+#citySearch,
 #stateSearch {
   width: 85%;
   height: 30px;
@@ -133,19 +135,19 @@ button:hover{
   width: 100%;
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(to right bottom,#A0B5EB,#C9F0E4);
+  background-image: linear-gradient(to right bottom, #a0b5eb, #c9f0e4);
 }
 
 #modal {
   width: 400px;
   height: 500px;
   margin-top: 25px;
-  background: rgba(225,225,255,0.09);
+  background: rgba(225, 225, 255, 0.09);
   backdrop-filter: blur(5px);
-  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-right: 1px solid rgba(255,255,255,0.2);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -171,12 +173,12 @@ button:hover{
 
 #signUpBtn,
 #logInBtn,
-#deleteBtn{
+#deleteBtn {
   width: 120px;
   height: 40px;
   font-size: 1.15rem;
   border-radius: 35px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   margin-left: 15px;
   border: none;
   outline: none;
@@ -194,7 +196,7 @@ button:hover{
 }
 
 .main-page {
-  background-color: var(--navbar-bg-color);
+  background-color: red;
 }
 
 .main-header {
@@ -225,7 +227,7 @@ button:hover{
   align-items: center;
 }
 
-.navbar li{
+.navbar li {
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
   display: inline-block;
@@ -233,11 +235,11 @@ button:hover{
   margin-right: 80px;
 }
 
-.navbar a{
+.navbar a {
   text-decoration: none;
 }
 
-.navbar a:hover{
+.navbar a:hover {
   color: white;
 }
 
@@ -249,12 +251,12 @@ button:hover{
   height: 100vh;
 }
 
-.icons{
+.icons {
   display: flex;
   justify-content: space-between;
 }
 
-.icons button{
+.icons button {
   border: none;
   background: transparent;
 }
