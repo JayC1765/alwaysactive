@@ -5,7 +5,7 @@ import SignUpLogInPage from './components/SignUpLogInPage';
 import MainPage from './containers/MainPage';
 import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   return (
@@ -21,6 +21,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
