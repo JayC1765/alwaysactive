@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development webpack serve --config webpack.config.js --open",
+    "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "dev1": "cross-env NODE_ENV=development webpack serve --open"
+    "start": "webpack serve --config webpack.config.js --open --mode development"
   },
   "author": "Jason Chan",
   "license": "MIT",
@@ -20,7 +20,6 @@
     "babel-loader": "^9.1.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
-    "dotenv": "^16.0.3",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
