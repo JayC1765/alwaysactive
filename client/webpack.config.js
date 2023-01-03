@@ -13,27 +13,27 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-        },
-      },
       // {
-      //   test: /\.(ts|js)x?$/,
+      //   test: /\.tsx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
+      // {
+      //   test: /\.jsx?$/,
       //   exclude: /node_modules/,
       //   loader: 'babel-loader',
       //   options: {
       //     presets: ['@babel/preset-env', '@babel/preset-react'],
       //   },
       // },
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+        },
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
