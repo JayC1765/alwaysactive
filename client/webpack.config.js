@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: ['regenerator-runtime/runtime.js', './src/index.jsx'],
+  entry: ['regenerator-runtime/runtime.js', './src/index'],
   resolve: {
     extensions: ['.tsx', 'ts', '.jsx', '.js'],
   },

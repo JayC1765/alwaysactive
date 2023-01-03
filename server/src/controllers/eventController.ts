@@ -1,6 +1,6 @@
-const db = require('../models/model');
+import {queryObj as db} from '../models/model.js'
 
-const eventController = {
+export const eventController = {
   addEvent: (req, res, next) => {
     const sql =
       'INSERT INTO events (name, city, state, time, description, username) VALUES ($1, $2, $3, $4, $5, $6);';
@@ -58,5 +58,3 @@ const eventController = {
     );
   },
 };
-
-module.exports = eventController;
